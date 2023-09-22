@@ -3,6 +3,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options as chromeOptions
 import selenium
 
 class Price:
@@ -17,8 +18,11 @@ class Price:
 class Scraper:
     # server in format example #eu-tarren-mill
     def __init__(self, server: str):
-        self.driver = webdriver.Chrome()
+        options = chromeOptions()
+        options.add_argument("headless")
+        self.driver = webdriver.Chrome(options)
         self.url = "https://undermine.exchange/" + server + "/"
+
 
     def finditem(self, itemid: str):
         foundprice = Price(0, 0, 0)
@@ -26,7 +30,6 @@ class Scraper:
 
         print("Scraping : " + url)
 
-        self.driver = webdriver.Chrome()
         self.driver.get(url)
 
         timeout = 30  # Max wait time before timeout
