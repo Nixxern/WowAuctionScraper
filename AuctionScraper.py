@@ -16,6 +16,9 @@ class Price:
     def getString(self):
         return f"{self.gold} g {self.silver} s {self.copper} c"
 
+    def getcsv(self):
+        return f"{self.gold},{self.silver},{self.copper}"
+
 
 class Scraper:
     # server in format example #eu-tarren-mill
@@ -59,4 +62,3 @@ class Scraper:
                 foundprice.copper = int(p.text.strip())
 
         return foundprice
-
