@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options as chromeOptions
 import selenium
-
+yessir = "yoink utført"
 
 class Price:
     def __init__(self, g: int, s: int, c: int):
@@ -24,7 +24,6 @@ class Scraper:
     # server in format example #eu-tarren-mill
     def __init__(self, server: str):
         options = chromeOptions()
-        options.add_argument("headless")
         self.driver = webdriver.Chrome(options)
         self.url = "https://undermine.exchange/" + server + "/"
 
@@ -62,3 +61,7 @@ class Scraper:
                 foundprice.copper = int(p.text.strip())
 
         return foundprice
+
+
+
+
